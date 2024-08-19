@@ -1,0 +1,27 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: HelloPayRedPackageFactory
+    network: matic
+    source:
+      address: "0x1a65bbbc5f29588919823f20f48369c977dd95e0"
+      abi: HelloPayRedPackageFactory
+      startBlock: 60773000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Coach
+        - User
+      abis:
+        - name: HelloPayRedPackageFactory
+          file: ./abis/HelloPayRedPackageFactory.json
+      eventHandlers:
+        - event: NewRedPackage(uint256,uint8,address,uint256,uint256,uint256,address,string,string)
+          handler: handleNewRedPackage
+        - event: Claim(uint256,address,uint256,uint256,address)
+          handler: handleClaim
+      file: ./src/index.ts

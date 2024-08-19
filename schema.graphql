@@ -1,0 +1,23 @@
+type RedPackge @entity {
+  id: ID!
+  rpType: String!
+  token: String!
+  isNativeToken: Boolean!
+  totalAmount: BigInt!
+  totalNumber: BigInt!
+  remainAmount: BigInt!
+  remainNumber: BigInt!
+  starttime: BigInt!
+  fid: String!
+  account: String!
+  memo: String!
+  symbol: String!
+  accounts: [ClaimRecord!]!
+}
+
+type ClaimRecord @entity {
+  id: ID!
+  fid: String!
+  account: String!
+  claimAmount: BigInt!
+}
